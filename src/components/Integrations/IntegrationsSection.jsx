@@ -50,7 +50,7 @@ export default function IntegrationsSection() {
           if (entry.isIntersecting) entry.target.classList.add('visible')
         })
       },
-      { threshold: 0.08, rootMargin: '0px 0px -60px 0px' }
+      { threshold: 0.01, rootMargin: '0px 0px -20px 0px' }
     )
     const el = sectionRef.current?.querySelector('.integration-canvas')
     if (el) observer.observe(el)
@@ -107,6 +107,16 @@ export default function IntegrationsSection() {
             <div className="line-fade left"></div>
             <span>+ 40 more integrations available</span>
             <div className="line-fade right"></div>
+          </div>
+
+          {/* Mobile-only: cycling messages below footer */}
+          <div className="integration-mobile-msgs">
+            {floatMsgs.map((msg, i) => (
+              <div key={i} className={`mobile-msg mobile-msg-${i + 1}`}>
+                <div className="msg-icon" style={{ background: msg.bg }}>{msg.icon}</div>
+                <span>{msg.text}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

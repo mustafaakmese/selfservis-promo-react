@@ -109,6 +109,29 @@ export default function HeroSection() {
     }
   }, [])
 
+  // ── Track which snap step the hero is at ──
+  const heroSnapIndex = useRef(0)
+
+  // ── Snap-index driven discrete state (desktop) ──
+  useEffect(() => {
+    const onSnapChange = (e) => {
+      const { index } = e.detail
+      heroSnapIndex.current = index
+      const isMobile = window.matchMedia('(max-width: 768px)').matches
+      if (isMobile) return
+      // Slide toggle: snap 1 = slide 2, anything else = slide 1
+      const track = document.querySelector('.slides-track')
+      if (!track) return
+      const onSlide2 = index === 1
+      track.classList.toggle('at-slide-1', onSlide2)
+      document.querySelectorAll('.slide-dot').forEach((d, i) => {
+        d.classList.toggle('active', i === (onSlide2 ? 1 : 0))
+      })
+    }
+    window.addEventListener('snapChange', onSnapChange)
+    return () => window.removeEventListener('snapChange', onSnapChange)
+  }, [])
+
   // ── Cached viewport height (updated on resize only, not per-scroll) ──
   const viewHeightRef = useRef(window.innerHeight)
 
@@ -204,6 +227,19 @@ export default function HeroSection() {
           }
         })
       }
+
+      // ── Exit fade: clean transition out of hero ──
+      const EXIT_START = 0.93
+      const heroContent = document.querySelector('.hero-content')
+      if (heroContent) {
+        if (rawProgress >= EXIT_START) {
+          const exitProgress = Math.min(1, (rawProgress - EXIT_START) / (1 - EXIT_START))
+          heroContent.style.opacity = 1 - exitProgress
+        } else {
+          heroContent.style.opacity = 1
+        }
+      }
+
       return
     }
 
@@ -216,27 +252,58 @@ export default function HeroSection() {
     const laptopVisible = laptopFrameEl && laptopFrameEl.classList.contains('visible')
 
     // ═══ COMPUTE PHASE — pure calculations, no DOM access ═══
-    const textPhaseEnd = 0.08
-    const cardsStart = 0.15
+    // Phase boundaries:
+    // 0.00-0.09 = Slide 1 → Slide 2 (ONLY slide changes, nothing else moves)
+    // 0.12-0.19 = Hero text fades out, laptop scales down (buffer after slide 2 snap at 0.09)
+    // 0.19-0.20 = Wizard text appears
+    // 0.20+     = Step cards appear
+    const FADE_START = 0.12
+    const FADE_END = 0.19
+    const cardsStart = 0.20
 
-    // Hero text transforms
+    // ── GATE: if snap index <= 1, restore initial state ──
+    // Safe to force hero text visible here — countdown is always done
+    // (scrollEnabled check at line 140 blocks this during countdown)
+    if (heroSnapIndex.current <= 1) {
+      // Restore hero text
+      if (heroTextBlock) {
+        heroTextBlock.style.transform = 'translateY(0) scale(1)'
+        heroTextBlock.style.opacity = '1'
+      }
+      // Restore laptop to full size
+      if (laptopFrameEl && laptopVisible) {
+        laptopFrameEl.style.transform = 'scale(1.4)'
+      }
+      // Hide wizard and cards
+      if (wizardText) {
+        wizardText.style.opacity = '0'
+        wizardText.style.transform = 'translateY(35vh) scale(1.1)'
+      }
+      if (scrollSequence) scrollSequence.style.opacity = '0'
+      return
+    }
+
+    // Hero text transforms — stays fully visible until FADE_START
     let heroTextTransform, heroTextOpacity
-    if (rawProgress > textPhaseEnd) {
+    if (rawProgress >= FADE_END) {
       heroTextTransform = `translateY(${-viewH * 0.26}px) scale(0.95)`
       heroTextOpacity = '0'
-    } else {
-      const textProgress = Math.min(1, rawProgress / textPhaseEnd)
+    } else if (rawProgress > FADE_START) {
+      const textProgress = (rawProgress - FADE_START) / (FADE_END - FADE_START)
       const translateY = -textProgress * (viewH * 0.26)
-      heroTextTransform = `translateY(${translateY}px) scale(1)`
+      heroTextTransform = `translateY(${translateY}px) scale(${1 - textProgress * 0.05})`
+      heroTextOpacity = String(1 - textProgress)
+    } else {
+      heroTextTransform = 'translateY(0) scale(1)'
       heroTextOpacity = '1'
     }
 
     // Wizard text transforms
     let wizardOpacity, wizardTransform
-    if (rawProgress > textPhaseEnd && rawProgress < 0.95) {
+    if (rawProgress > FADE_END && rawProgress < 0.95) {
       wizardOpacity = '1'
-      const moveStart = 0.08
-      const moveEnd = 0.15
+      const moveStart = FADE_END
+      const moveEnd = cardsStart
       let moveProgress = 0
       if (rawProgress >= moveEnd) {
         moveProgress = 1
@@ -258,14 +325,13 @@ export default function HeroSection() {
     // Scroll sequence visibility
     const seqOpacity = rawProgress >= cardsStart - 0.02 ? '1' : '0'
 
-    // Laptop scale
+    // Laptop scale — stays at 1.4 until FADE_START, then scales down
     let laptopTransform = null
     if (laptopVisible) {
-      const laptopEnd = 0.12
-      if (rawProgress >= laptopEnd) {
+      if (rawProgress >= FADE_END) {
         laptopTransform = 'scale(0.95)'
-      } else if (rawProgress > 0) {
-        const t = rawProgress / laptopEnd
+      } else if (rawProgress > FADE_START) {
+        const t = (rawProgress - FADE_START) / (FADE_END - FADE_START)
         const s = 1.4 + (0.95 - 1.4) * t
         laptopTransform = `scale(${s})`
       }

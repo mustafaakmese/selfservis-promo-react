@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import useScrollSnap from './hooks/useScrollSnap'
 import Navbar from './components/Navbar'
 import HeroSection from './components/Hero/HeroSection'
 import FeaturesSection from './components/Features/FeaturesSection'
@@ -11,6 +12,7 @@ import LegalModal from './components/LegalModal'
 
 function App() {
   const [legalType, setLegalType] = useState(null)
+  useScrollSnap()
 
   // ── Cal.com EU embed initialization ──
   useEffect(() => {

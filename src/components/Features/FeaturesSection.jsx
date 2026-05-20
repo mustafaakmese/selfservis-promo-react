@@ -241,7 +241,7 @@ export default function FeaturesSection() {
             // Color transition: red → yellow → green
             if (current < 30) npsEl.style.color = '#ef4444'
             else if (current < 55) npsEl.style.color = '#eab308'
-            else npsEl.style.color = '#10b981'
+            else npsEl.style.color = '#67e8f9'
             if (progress < 1) requestAnimationFrame(tickNps)
           }
           requestAnimationFrame(tickNps)
@@ -296,7 +296,7 @@ export default function FeaturesSection() {
       // Card 7: Reset NPS
       if (prevIndex === 7) {
         const npsEl = wrapper.querySelector('[data-ft-index="7"] .ft-nps-score')
-        if (npsEl) { npsEl.textContent = '+72'; npsEl.style.color = '#10b981' }
+        if (npsEl) { npsEl.textContent = '+72'; npsEl.style.color = '#67e8f9' }
       }
       // Card 8: Reset analytics
       if (prevIndex === 8) {
@@ -369,12 +369,6 @@ export default function FeaturesSection() {
       const rawIndex = progress * CARD_COUNT
       const newIndex = Math.min(Math.floor(rawIndex), CARD_COUNT - 1)
 
-      // Only change if different AND cooldown has elapsed
-      if (newIndex !== currentIndexRef.current) {
-        const now = performance.now()
-        if (now - lastChangeTime < COOLDOWN_MS) return
-        lastChangeTime = now
-      }
       applyState(newIndex)
     }
 
@@ -423,6 +417,195 @@ export default function FeaturesSection() {
     }
   }, [])
 
+  // ── MOBILE: scroll-driven carousel ──
+  useEffect(() => {
+    if (!window.matchMedia('(max-width: 768px)').matches) return
+
+    const wrapper = wrapperRef.current
+    if (!wrapper) return
+
+    const cards = wrapper.querySelectorAll('.ft-card')
+    const dots = wrapper.querySelectorAll('.ft-mobile-dot')
+    const progressFill = wrapper.querySelector('.ft-mobile-progress-fill')
+    const CARD_COUNT = cards.length
+    let currentIdx = -1
+    let viewH = window.innerHeight
+
+    // ── JS animation effects (same as desktop) ──
+    const effectTimers = { wizard: [], trackToggle: null, dayToggle: null }
+
+    function animateCounterMobile(el, target, suffix, duration) {
+      const startTime = performance.now()
+      function tick(now) {
+        const elapsed = now - startTime
+        const progress = Math.min(elapsed / duration, 1)
+        const eased = 1 - Math.pow(1 - progress, 3)
+        const current = Math.round(target * eased)
+        el.textContent = current.toLocaleString() + (suffix || '')
+        if (progress < 1) requestAnimationFrame(tick)
+      }
+      requestAnimationFrame(tick)
+    }
+
+    function activateMobileEffects(index) {
+      if (index === 1) {
+        const steps = wrapper.querySelectorAll('[data-ft-index="1"] .ft-wizard-step')
+        steps.forEach(s => { s.classList.remove('ft-step-done', 'ft-step-active', 'active') })
+        if (steps[0]) steps[0].classList.add('active', 'ft-step-active')
+        effectTimers.wizard.push(setTimeout(() => {
+          if (steps[0]) { steps[0].classList.remove('ft-step-active', 'active'); steps[0].classList.add('ft-step-done') }
+          if (steps[1]) steps[1].classList.add('active', 'ft-step-active')
+        }, 1000))
+        effectTimers.wizard.push(setTimeout(() => {
+          if (steps[1]) { steps[1].classList.remove('ft-step-active', 'active'); steps[1].classList.add('ft-step-done') }
+          if (steps[2]) steps[2].classList.add('active', 'ft-step-active')
+        }, 2000))
+      }
+      if (index === 2) {
+        const statVals = wrapper.querySelectorAll('[data-ft-index="2"] .ft-email-stat-val')
+        const targets = [94, 67, 42]
+        statVals.forEach((el, i) => {
+          if (targets[i] !== undefined) setTimeout(() => animateCounterMobile(el, targets[i], '%', 1200), i * 200)
+        })
+      }
+      if (index === 3) {
+        const opts = wrapper.querySelectorAll('[data-ft-index="3"] .ft-parallel-opt')
+        if (opts.length >= 2) {
+          let trackState = true
+          effectTimers.trackToggle = setInterval(() => {
+            trackState = !trackState
+            opts[0].classList.toggle('selected', trackState)
+            opts[1].classList.toggle('selected', !trackState)
+          }, 2000)
+        }
+      }
+      if (index === 4) {
+        const tabs = wrapper.querySelectorAll('[data-ft-index="4"] .ft-agenda-tab')
+        if (tabs.length >= 2) {
+          let dayState = true
+          effectTimers.dayToggle = setInterval(() => {
+            dayState = !dayState
+            tabs[0].classList.toggle('active', dayState)
+            tabs[1].classList.toggle('active', !dayState)
+          }, 3000)
+        }
+      }
+      if (index === 7) {
+        const npsEl = wrapper.querySelector('[data-ft-index="7"] .ft-nps-score')
+        if (npsEl) {
+          const startTime = performance.now()
+          function tickNps(now) {
+            const elapsed = now - startTime
+            const progress = Math.min(elapsed / 1500, 1)
+            const eased = 1 - Math.pow(1 - progress, 3)
+            const current = Math.round(72 * eased)
+            npsEl.textContent = '+' + current
+            if (current < 30) npsEl.style.color = '#ef4444'
+            else if (current < 55) npsEl.style.color = '#eab308'
+            else npsEl.style.color = '#67e8f9'
+            if (progress < 1) requestAnimationFrame(tickNps)
+          }
+          requestAnimationFrame(tickNps)
+        }
+      }
+      if (index === 8) {
+        const statVals = wrapper.querySelectorAll('[data-ft-index="8"] .ft-stat-val')
+        statVals.forEach(el => {
+          const text = el.dataset.ftOriginal || el.textContent
+          if (!el.dataset.ftOriginal) el.dataset.ftOriginal = text
+          const numMatch = text.match(/([\d,]+)/)
+          const suffix = text.replace(/([\d,]+)/, '')
+          if (numMatch) {
+            const target = parseInt(numMatch[1].replace(/,/g, ''), 10)
+            animateCounterMobile(el, target, suffix, 1400)
+          }
+        })
+      }
+    }
+
+    function deactivateMobileEffects(prevIndex) {
+      if (prevIndex === 1) {
+        effectTimers.wizard.forEach(t => clearTimeout(t))
+        effectTimers.wizard = []
+      }
+      if (prevIndex === 3 && effectTimers.trackToggle) {
+        clearInterval(effectTimers.trackToggle); effectTimers.trackToggle = null
+      }
+      if (prevIndex === 4 && effectTimers.dayToggle) {
+        clearInterval(effectTimers.dayToggle); effectTimers.dayToggle = null
+      }
+    }
+
+    function applyMobileState(index) {
+      if (index === currentIdx) return
+      const prevIdx = currentIdx
+      currentIdx = index
+
+      // Deactivate previous JS effects
+      if (prevIdx >= 0) deactivateMobileEffects(prevIdx)
+
+      cards.forEach((card, i) => {
+        card.classList.remove('ft-mobile-active', 'ft-mobile-prev', 'ft-mobile-next', 'ft-active', 'ft-passed', 'ft-upcoming')
+        if (i === index) {
+          card.classList.add('ft-mobile-active', 'ft-active')
+        } else if (i < index) {
+          card.classList.add('ft-mobile-prev', 'ft-passed')
+        } else {
+          card.classList.add('ft-mobile-next', 'ft-upcoming')
+        }
+      })
+
+      // Activate JS effects for new card
+      activateMobileEffects(index)
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index)
+      })
+
+      if (progressFill) {
+        progressFill.style.width = `${((index + 1) / CARD_COUNT) * 100}%`
+      }
+    }
+
+    let ticking = false
+    function onScroll() {
+      if (ticking) return
+      ticking = true
+      requestAnimationFrame(() => {
+        const rect = wrapper.getBoundingClientRect()
+        const scrolled = -rect.top
+        const maxScroll = wrapper.offsetHeight - viewH
+        if (maxScroll <= 0) { ticking = false; return }
+        const progress = Math.max(0, Math.min(1, scrolled / maxScroll))
+        const newIndex = Math.min(Math.floor(progress * CARD_COUNT), CARD_COUNT - 1)
+        if (scrolled >= 0) applyMobileState(newIndex)
+
+        // Removed exit fade logic to prevent blank screen issue before Integrations section.
+        const viewport = wrapper.querySelector('.ft-stack-viewport')
+        if (viewport) {
+          viewport.style.opacity = '1'
+        }
+
+        ticking = false
+      })
+    }
+
+    function onResize() { viewH = window.innerHeight }
+
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onResize, { passive: true })
+    onScroll()
+
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onResize)
+      // Clean up timers
+      effectTimers.wizard.forEach(t => clearTimeout(t))
+      if (effectTimers.trackToggle) clearInterval(effectTimers.trackToggle)
+      if (effectTimers.dayToggle) clearInterval(effectTimers.dayToggle)
+    }
+  }, [])
+
   return (
     <section className="features-stacking-section" id="features">
       <div className="ft-stack-wrapper" id="ft-stack-wrapper" ref={wrapperRef}>
@@ -436,12 +619,12 @@ export default function FeaturesSection() {
               {featureCards.map(card => (
                 <FeatureCard key={card.index} card={card} />
               ))}
-              {/* Progress indicator */}
+              {/* Desktop Progress indicator */}
               <div className="ft-stack-progress" id="ft-stack-progress">
                 <div className="ft-progress-fill" id="ft-progress-fill"></div>
               </div>
             </div>
-            {/* Minimap */}
+            {/* Minimap (desktop only) */}
             <div className="ft-stack-minimap" id="ft-stack-minimap">
               <div className="ft-minimap-scroll" id="ft-minimap-scroll">
                 {miniCards.map((mini, i) => (
@@ -451,6 +634,17 @@ export default function FeaturesSection() {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+          {/* Mobile progress bar + dots */}
+          <div className="ft-mobile-nav">
+            <div className="ft-mobile-progress-track">
+              <div className="ft-mobile-progress-fill"></div>
+            </div>
+            <div className="ft-mobile-dots">
+              {featureCards.map((_, i) => (
+                <span key={i} className={`ft-mobile-dot${i === 0 ? ' active' : ''}`}></span>
+              ))}
             </div>
           </div>
         </div>
