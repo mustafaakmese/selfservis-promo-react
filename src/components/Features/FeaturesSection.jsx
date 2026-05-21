@@ -149,6 +149,10 @@ export default function FeaturesSection() {
   const clickLockRef = useRef(false)
 
   useEffect(() => {
+    if (typeof window !== 'undefined' && /CriOS/i.test(navigator.userAgent)) {
+      document.documentElement.classList.add('is-crios')
+    }
+
     if (window.matchMedia('(max-width: 768px)').matches) return
 
     const wrapper = wrapperRef.current

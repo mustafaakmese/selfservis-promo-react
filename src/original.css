@@ -4493,7 +4493,6 @@ html, body { overflow-x: clip; }
     overflow: hidden;
   }
 
-  /* Media panel — proportionally scaled down */
   .ft-card-media {
     flex: 0 0 50%;
     min-height: 0 !important;
@@ -4501,6 +4500,10 @@ html, body { overflow-x: clip; }
     padding: 6px;
     width: 100%;
     overflow: hidden;
+  }
+  .is-crios .ft-card-media {
+    flex: 0 0 45%;
+    max-height: 45% !important;
   }
   .ft-media-placeholder {
     padding: 8px;
@@ -4585,7 +4588,6 @@ html, body { overflow-x: clip; }
     overflow: hidden;
     flex-shrink: 0;
   }
-  /* Bullets — fill remaining */
   .ft-card-bullets {
     gap: 3px;
     flex: 1;
@@ -4595,6 +4597,9 @@ html, body { overflow-x: clip; }
     font-size: 11px !important;
     line-height: 1.35;
   }
+  .is-crios .ft-card-title { font-size: 14px !important; }
+  .is-crios .ft-card-desc { font-size: 10.5px !important; line-height: 1.35; }
+  .is-crios .ft-card-bullets li { font-size: 10px !important; line-height: 1.25; }
   .ft-bullet-check {
     font-size: 10px;
   }
