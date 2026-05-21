@@ -40,7 +40,7 @@ const featureCards = [
     desc: 'Automatically detects and presents parallel sessions for attendee selection, supports seamless multi-day event registration with a single checkout, and integrates directly with the Intelligent Agenda for session-level sign-ups.',
     bullets: ['Automatic parallel session detection & selection', 'Multi-day registration in a single flow', 'Deep integration with Intelligent Agenda'],
     feature: 'registration',
-    mediaHtml: `<div class="ft-reg-form"><div class="ft-form-field"><div class="ft-form-label"></div><div class="ft-form-input"></div></div><div class="ft-reg-parallel"><div class="ft-parallel-badge">⚡ Parallel Sessions</div><div class="ft-parallel-options"><div class="ft-parallel-opt selected">Track A</div><div class="ft-parallel-opt">Track B</div></div></div><div class="ft-reg-days"><div class="ft-day-chip active">Day 1</div><div class="ft-day-chip active">Day 2</div><div class="ft-day-chip">Day 3</div></div><div class="ft-form-consent"><div class="ft-consent-check"></div><div class="ft-consent-text"></div></div><div class="ft-form-submit">Register Now</div></div>`
+    mediaHtml: `<div class="ft-reg-form"><div class="ft-reg-top-row"><div class="ft-reg-parallel"><div class="ft-parallel-badge">⚡ Parallel Sessions</div><div class="ft-parallel-options"><div class="ft-parallel-opt selected">Track A</div><div class="ft-parallel-opt">Track B</div></div></div><div class="ft-reg-days"><div class="ft-day-chip active">Day 1</div><div class="ft-day-chip active">Day 2</div><div class="ft-day-chip">Day 3</div></div></div><div class="ft-form-consent"><div class="ft-consent-check"></div><div class="ft-consent-text"></div></div><div class="ft-form-submit">Register Now</div></div>`
   },
   {
     index: 4,
@@ -60,7 +60,7 @@ const featureCards = [
     desc: 'Custom fonts, curated color palettes, dynamic backgrounds, and fully responsive layouts. Every event page reflects your brand identity with pixel-perfect precision. Total design freedom, no templates.',
     bullets: ['Custom fonts & color palettes', 'Dynamic backgrounds & visual themes', 'Fully responsive across all devices'],
     feature: 'eventpage',
-    mediaHtml: `<div class="ft-design-preview"><div class="ft-design-palette"><div class="ft-palette-dot" style="background:#0ea5e9"></div><div class="ft-palette-dot" style="background:#8b5cf6"></div><div class="ft-palette-dot" style="background:#10b981"></div><div class="ft-palette-dot" style="background:#f59e0b"></div></div><div class="ft-design-font"><div class="ft-font-label">Aa</div><div class="ft-font-name">Inter</div></div><div class="ft-design-bg"><div class="ft-bg-block bg-gradient"></div><div class="ft-bg-block bg-pattern"></div><div class="ft-bg-block bg-solid active"></div></div><div class="ft-design-mockup"><div class="ft-mockup-bar"></div><div class="ft-mockup-line" style="width:70%"></div><div class="ft-mockup-line" style="width:50%"></div></div></div>`
+    mediaHtml: `<div class="ft-design-preview"><div class="ft-design-top-row"><div class="ft-design-font"><div class="ft-font-label">Aa</div><div class="ft-font-name">Inter</div></div><div class="ft-design-palette"><div class="ft-palette-dot" style="background:#0ea5e9"></div><div class="ft-palette-dot" style="background:#8b5cf6"></div><div class="ft-palette-dot" style="background:#10b981"></div><div class="ft-palette-dot" style="background:#f59e0b"></div></div></div><div class="ft-design-bg"><div class="ft-bg-block bg-gradient"></div><div class="ft-bg-block bg-pattern"></div><div class="ft-bg-block bg-solid active"></div></div><div class="ft-design-mockup"><div class="ft-mockup-bar"></div><div class="ft-mockup-line" style="width:70%"></div><div class="ft-mockup-line" style="width:50%"></div></div></div>`
   },
   {
     index: 6,
@@ -80,7 +80,7 @@ const featureCards = [
     desc: 'Post-event surveys collect actionable feedback and NPS scores before attendees receive their branded PDF attendance certificates. The survey-first flow ensures maximum response rates while rewarding participation.',
     bullets: ['Survey-first flow for maximum response rates', 'Custom survey builder with NPS tracking', 'Branded PDF certificates auto-generated'],
     feature: 'surveys',
-    mediaHtml: `<div class="ft-cert-preview"><div class="ft-survey-mini"><div class="ft-survey-q"></div><div class="ft-survey-stars">★★★★★</div></div><div class="ft-survey-nps"><div class="ft-nps-label">NPS</div><div class="ft-nps-score">+72</div></div><div class="ft-cert-doc"><div class="ft-cert-seal">🏆</div><div class="ft-cert-title-line"></div><div class="ft-cert-name-line"></div><div class="ft-cert-date-line"></div><div class="ft-cert-badge">Verified ✓</div></div></div>`
+    mediaHtml: `<div class="ft-cert-preview"><div class="ft-survey-top-row"><div class="ft-survey-mini"><div class="ft-survey-q"></div><div class="ft-survey-stars">★★★★★</div></div><div class="ft-survey-nps"><div class="ft-nps-label">NPS</div><div class="ft-nps-score">+72</div></div></div><div class="ft-cert-doc"><div class="ft-cert-seal">🏆</div><div class="ft-cert-title-line"></div><div class="ft-cert-name-line"></div><div class="ft-cert-date-line"></div><div class="ft-cert-badge">Verified ✓</div></div></div>`
   },
   {
     index: 8,

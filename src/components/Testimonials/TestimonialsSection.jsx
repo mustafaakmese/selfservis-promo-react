@@ -43,6 +43,7 @@ export default function TestimonialsSection() {
   const currentSlideRef = useRef(0)
   const isAnimating = useRef(false)
   const autoTimerRef = useRef(null)
+  const touchStartRef = useRef({ x: 0, y: 0 })
 
   // Reveal observer for stat counter
   useEffect(() => {
@@ -108,6 +109,11 @@ export default function TestimonialsSection() {
 
     currentSlideRef.current = index
 
+    // Update dots
+    document.querySelectorAll('.testimonial-dot').forEach((dot, i) => {
+      dot.classList.toggle('active', i === index)
+    })
+
     setTimeout(() => {
       oldSlide.classList.remove('slide-out-left', 'slide-out-right')
       isAnimating.current = false
@@ -139,6 +145,21 @@ export default function TestimonialsSection() {
     autoTimerRef.current = setInterval(() => { nextSlide() }, 6000)
   }, [nextSlide])
 
+  // Touch swipe for mobile carousel
+  const handleTouchStart = useCallback((e) => {
+    touchStartRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }
+  }, [])
+
+  const handleTouchEnd = useCallback((e) => {
+    const dx = touchStartRef.current.x - e.changedTouches[0].clientX
+    const dy = touchStartRef.current.y - e.changedTouches[0].clientY
+    // Only trigger if horizontal swipe is dominant and > 40px
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+      if (dx > 0) nextSlide()
+      else prevSlide()
+    }
+  }, [nextSlide, prevSlide])
+
   return (
     <section className="section" id="social-proof">
       <div className="container">
@@ -161,8 +182,11 @@ export default function TestimonialsSection() {
         <div 
           className="testimonial-carousel reveal" 
           id="testimonial-carousel"
+          data-scroll-free
           onMouseEnter={pauseAuto}
           onMouseLeave={resumeAuto}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
         >
           <div className="testimonial-slides" id="testimonial-slides">
             {slides.map((slide, i) => (
@@ -190,11 +214,21 @@ export default function TestimonialsSection() {
           </div>
 
           <div className="testimonial-nav">
-            <button className="testimonial-nav-btn" onClick={prevSlide} aria-label="Previous testimonial">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <button className="testimonial-nav-arrow prev-arrow" onClick={prevSlide} aria-label="Previous testimonial">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
             </button>
-            <button className="testimonial-nav-btn" onClick={nextSlide} aria-label="Next testimonial">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg>
+            <div className="testimonial-dots">
+              {slides.map((_, i) => (
+                <button
+                  key={i}
+                  className={`testimonial-dot${i === 0 ? ' active' : ''}`}
+                  onClick={() => goToSlide(i, i > currentSlideRef.current ? 'next' : 'prev')}
+                  aria-label={`Go to testimonial ${i + 1}`}
+                />
+              ))}
+            </div>
+            <button className="testimonial-nav-arrow next-arrow" onClick={nextSlide} aria-label="Next testimonial">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg>
             </button>
           </div>
         </div>

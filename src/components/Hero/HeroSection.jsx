@@ -151,7 +151,7 @@ export default function HeroSection() {
     // ── MOBILE scroll-driven experience ──
     if (window.matchMedia('(max-width: 768px)').matches) {
       // Phase thresholds
-      const SLIDE2      = 0.14  // phone switches to slide 2
+      const SLIDE2      = 0.18  // phone switches to slide 2
       const FADE_START  = 0.28  // phone starts fading out
       const FADE_END    = 0.42  // phone gone, section 2 fully visible
       const CARD1       = 0.42
@@ -174,7 +174,7 @@ export default function HeroSection() {
       // Slide change on phone mockup
       const track = document.querySelector('.slides-track')
       if (track) {
-        const onSlide2 = rawProgress >= SLIDE2 && rawProgress < FADE_END
+        const onSlide2 = rawProgress >= SLIDE2 - 0.01 && rawProgress < FADE_END - 0.01
         track.classList.toggle('at-slide-1', onSlide2)
         document.querySelectorAll('.slide-dot').forEach((d, i) => {
           d.classList.toggle('active', i === (onSlide2 ? 1 : 0))
@@ -200,10 +200,10 @@ export default function HeroSection() {
 
       // Active card from scroll position
       let targetCard = -1
-      if      (rawProgress >= CARD4) targetCard = 3
-      else if (rawProgress >= CARD3) targetCard = 2
-      else if (rawProgress >= CARD2) targetCard = 1
-      else if (rawProgress >= CARD1) targetCard = 0
+      if      (rawProgress >= CARD4 - 0.01) targetCard = 3
+      else if (rawProgress >= CARD3 - 0.01) targetCard = 2
+      else if (rawProgress >= CARD2 - 0.01) targetCard = 1
+      else if (rawProgress >= CARD1 - 0.01) targetCard = 0
 
       if (targetCard !== lastMobileCardRef.current) {
         const prev = lastMobileCardRef.current
@@ -229,7 +229,7 @@ export default function HeroSection() {
       }
 
       // ── Exit fade: clean transition out of hero ──
-      const EXIT_START = 0.93
+      const EXIT_START = 0.98
       const heroContent = document.querySelector('.hero-content')
       if (heroContent) {
         if (rawProgress >= EXIT_START) {

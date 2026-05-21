@@ -28,7 +28,7 @@ export default function useScrollSnap() {
       const maxScroll = heroH - vh
       if (maxScroll > 0) {
         if (isMobile) {
-          const phases = [0, 0.14, 0.42, 0.57, 0.71, 0.85]
+          const phases = [0, 0.18, 0.42, 0.57, 0.71, 0.85, 0.97]
           phases.forEach(p => pts.push({ pos: heroTop + p * maxScroll, section: 'hero' }))
         } else {
           const phases = [0, 0.09, 0.20, 0.395, 0.59, 0.79]
