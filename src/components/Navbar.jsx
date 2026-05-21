@@ -1,7 +1,9 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const menuRef = useRef(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -9,8 +11,20 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setMobileMenuOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
   const handleNavClick = useCallback((e) => {
     e.preventDefault()
+    setMobileMenuOpen(false)
     const href = e.currentTarget.getAttribute('href')
     const target = document.querySelector(href)
     if (target) {
@@ -19,35 +33,29 @@ export default function Navbar() {
   }, [])
 
   return (
-    <nav className={`nav${scrolled ? ' scrolled' : ''}`} id="nav">
+    <nav className={`nav${scrolled ? ' scrolled' : ''}`} id="nav" ref={menuRef}>
       <div className="nav-inner">
         <a href="#" className="nav-logo-link" onClick={(e) => {
           e.preventDefault()
+          setMobileMenuOpen(false)
           window.scrollTo({ top: 0, behavior: 'smooth' })
         }}>
           <img src="/img/vistream-logo.ico" alt="Vistream" className="nav-logo" />
         </a>
-        {/* ── Mobile: brand text + home icon ── */}
+        {/* ── Mobile: brand text + 3-dot menu ── */}
         <span className="nav-brand-text">Vistream Events</span>
         <div className="nav-icons-mobile">
-          <a href="#hero" onClick={handleNavClick} title="Home" aria-label="Home">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l9 8h-3v9h-5v-6h-2v6H6v-9H3l9-8z"/></svg>
-          </a>
-          <button
-            className="nav-arrow-btn"
-            aria-label="Previous section"
-            title="Previous section"
-            onClick={() => window.__snapNav?.prev()}
+          <button 
+            className="mobile-menu-toggle" 
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle navigation menu"
           >
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
-          </button>
-          <button
-            className="nav-arrow-btn"
-            aria-label="Next section"
-            title="Next section"
-            onClick={() => window.__snapNav?.next()}
-          >
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+            {/* 3 dots vertical (kebab) icon */}
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <circle cx="12" cy="5" r="2"/>
+              <circle cx="12" cy="12" r="2"/>
+              <circle cx="12" cy="19" r="2"/>
+            </svg>
           </button>
         </div>
 
@@ -69,6 +77,15 @@ export default function Navbar() {
             Book Now
           </button>
         </div>
+      </div>
+
+      {/* ── Mobile Pocket Dropdown ── */}
+      <div className={`mobile-dropdown ${mobileMenuOpen ? 'open' : ''}`}>
+        <a href="#hero" onClick={handleNavClick}>Home</a>
+        <a href="#features" onClick={handleNavClick}>Features</a>
+        <a href="#integrations" onClick={handleNavClick}>Integrations</a>
+        <a href="#social-proof" onClick={handleNavClick}>Testimonials</a>
+        <a href="#comparison" onClick={handleNavClick}>Why Vistream Events</a>
       </div>
     </nav>
   )
