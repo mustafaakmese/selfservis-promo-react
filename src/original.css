@@ -3932,6 +3932,7 @@ html, body { overflow-x: clip; }
     position: sticky !important;
     top: 0 !important;
     height: 100vh !important;
+    height: 100svh !important;
     width: 100%;
     overflow: hidden;
     display: flex !important;
@@ -4398,6 +4399,7 @@ html, body { overflow-x: clip; }
     position: sticky !important;
     top: 0 !important;
     height: 100vh !important;
+    height: 100svh !important;
     padding: 70px 16px 16px !important;
     max-width: 100%;
     overflow: hidden;
