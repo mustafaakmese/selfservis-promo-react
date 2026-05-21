@@ -13,21 +13,21 @@ const slides = [
     alt: 'Osman Dağgezen',
     quote: '"Vistream streamlined our global pharma event strategies, perfectly balancing seamless omnichannel execution with strict regulatory compliance."',
     name: 'Osman Dağgezen',
-    title: 'Founder, OD Pharma Consulting · Ex-VP, Viatris'
+    title: <>Founder, OD Pharma Consulting <br /> Ex-VP, Viatris</>
   },
   {
-    img: '/testimonials/person-2.png',
-    alt: 'Daniel Carter',
-    quote: '"The AI-powered registration and landing page builder is a game-changer. We went from concept to live event in under 15 minutes. The analytics dashboard alone is worth it."',
-    name: 'Daniel Carter',
-    title: 'Head of Events · Roche'
+    img: '/testimonials/nicolas-bargas-new.jpeg',
+    alt: 'Nicolas Bargas',
+    quote: '"Vistream\'s hands-on onboarding and deep customization empowered us to perfectly tailor our digital events and scale campaigns across Greater Asia."',
+    name: 'Nicolas Bargas',
+    title: <>Omnichannel & Marketing Communication Director <br /> BD, Greater Asia Region</>
   },
   {
-    img: '/testimonials/person-3.png',
-    alt: 'Dr. Lin Wei',
-    quote: '"We run 50+ webinars per quarter across 12 countries. Vistream\'s multi-language support and compliance features made it the only platform that checked every box."',
-    name: 'Dr. Lin Wei',
-    title: 'Global Medical Affairs · Pfizer'
+    img: '/testimonials/gokhan-isik.jpeg',
+    alt: 'Gökhan Işık',
+    quote: '"Vistream simplified our complex event operations in Turkiye. Their reliable platform guarantees flawless execution while ensuring complete compliance."',
+    name: 'Gökhan Işık',
+    title: <>Event & Operations Manager <br /> Johnson & Johnson Turkiye</>
   }
 ]
 
