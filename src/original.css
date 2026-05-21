@@ -4605,6 +4605,11 @@ html, body { overflow-x: clip; }
   .is-crios .ft-stat-box { padding: 6px 4px; }
   .is-crios .ft-stat-val { font-size: 14px; }
   .is-crios .ft-chart-mini { height: 40px; padding: 6px 8px; }
+  .is-crios .ft-agenda-preview { padding: 8px 12px; gap: 6px; }
+  .is-crios .ft-agenda-tab { padding: 2px 8px; font-size: 9px; }
+  .is-crios .ft-agenda-tz { padding: 2px 6px; font-size: 8px; }
+  .is-crios .ft-agenda-item { gap: 6px; }
+  .is-crios .ft-agenda-time { font-size: 10px; width: 32px; }
   .ft-bullet-check {
     font-size: 10px;
   }
