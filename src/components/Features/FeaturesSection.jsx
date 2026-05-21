@@ -1,10 +1,11 @@
 import { useEffect, useRef } from 'react'
+import { FluentIcon } from './featureData'
 
 // Feature card data
 const featureCards = [
   {
     index: 0,
-    icon: '✦',
+    icon: <FluentIcon folder="Sparkles" />,
     eyebrow: 'AI Copilot Agent',
     title: 'Use your own Microsoft Copilot to manage every event',
     desc: 'No new tools to learn. The same Microsoft Copilot already on your desktop becomes your event manager. Just type what you need: create events, add speakers, send invites, publish landing pages. All through simple conversation in the tool your team already uses every day.',
@@ -14,7 +15,7 @@ const featureCards = [
   },
   {
     index: 1,
-    icon: '⚙️',
+    icon: <FluentIcon folder="Gear" />,
     eyebrow: 'Self-Service Studio',
     title: 'Launch professional webinars in minutes',
     desc: 'Our intuitive wizard guides you through every step. No technical team required. Full branding control, custom domains, and reusable templates included.',
@@ -24,7 +25,7 @@ const featureCards = [
   },
   {
     index: 2,
-    icon: '📧',
+    icon: <FluentIcon folder="Envelope" />,
     eyebrow: 'Intelligent Emails',
     title: 'Data-driven emails that maximize attendance',
     desc: 'AI-optimized send timing, real-time delivery and engagement stats, and automatic .ics calendar invites that block attendees\' calendars. Every email is tracked, measured, and designed to convert.',
@@ -34,7 +35,7 @@ const featureCards = [
   },
   {
     index: 3,
-    icon: '📋',
+    icon: <FluentIcon folder="Clipboard" />,
     eyebrow: 'Intelligent Register',
     title: 'Smart registration with parallel sessions & multi-day support',
     desc: 'Automatically detects and presents parallel sessions for attendee selection, supports seamless multi-day event registration with a single checkout, and integrates directly with the Intelligent Agenda for session-level sign-ups.',
@@ -44,7 +45,7 @@ const featureCards = [
   },
   {
     index: 4,
-    icon: '🗓️',
+    icon: <FluentIcon folder="Spiral calendar" />,
     eyebrow: 'Intelligent Agenda',
     title: 'Dynamic schedules with timezone intelligence',
     desc: 'Build multi-day, multi-track agendas with auto-calculated time slots. Attendees see sessions in their local timezone automatically. Parallel sessions, breaks, and speaker assignments, all managed from one intuitive interface.',
@@ -54,7 +55,7 @@ const featureCards = [
   },
   {
     index: 5,
-    icon: '🎨',
+    icon: <FluentIcon folder="Artist palette" />,
     eyebrow: 'Customized Event Page',
     title: 'Your brand, your stage. Fully customizable event pages',
     desc: 'Custom fonts, curated color palettes, dynamic backgrounds, and fully responsive layouts. Every event page reflects your brand identity with pixel-perfect precision. Total design freedom, no templates.',
@@ -64,7 +65,7 @@ const featureCards = [
   },
   {
     index: 6,
-    icon: '🗺️',
+    icon: <FluentIcon folder="World map" />,
     eyebrow: 'Intelligent Journey',
     title: 'Visualize every touchpoint of your attendee experience',
     desc: 'A live screenshot-based journey map showing every page your attendees interact with, from registration to certificates. Preview, download as PDF, regenerate on-demand, and share with stakeholders for approval before going live.',
@@ -74,7 +75,7 @@ const featureCards = [
   },
   {
     index: 7,
-    icon: '✅',
+    icon: <FluentIcon folder="Check mark button" />,
     eyebrow: 'Surveys & Certificates',
     title: 'Capture feedback first, then reward with certificates',
     desc: 'Post-event surveys collect actionable feedback and NPS scores before attendees receive their branded PDF attendance certificates. The survey-first flow ensures maximum response rates while rewarding participation.',
@@ -84,7 +85,7 @@ const featureCards = [
   },
   {
     index: 8,
-    icon: '📈',
+    icon: <FluentIcon folder="Bar chart" />,
     eyebrow: 'Live Analytics',
     title: 'Real-time insights that drive decisions',
     desc: 'Track attendees, engagement metrics, watch time, and participation in real time. Comprehensive post-event dashboards with exportable reports.',
@@ -95,15 +96,15 @@ const featureCards = [
 ]
 
 const miniCards = [
-  { icon: '✦', label: 'AI Copilot' },
-  { icon: '⚙️', label: 'Studio' },
-  { icon: '📧', label: 'Emails' },
-  { icon: '📋', label: 'Register' },
-  { icon: '🗓️', label: 'Agenda' },
-  { icon: '🎨', label: 'Event Page' },
-  { icon: '🗺️', label: 'Journey' },
-  { icon: '✅', label: 'Surveys' },
-  { icon: '📈', label: 'Analytics' },
+  { icon: <FluentIcon folder="Sparkles" />, label: 'AI Copilot' },
+  { icon: <FluentIcon folder="Gear" />, label: 'Studio' },
+  { icon: <FluentIcon folder="Envelope" />, label: 'Emails' },
+  { icon: <FluentIcon folder="Clipboard" />, label: 'Register' },
+  { icon: <FluentIcon folder="Spiral calendar" />, label: 'Agenda' },
+  { icon: <FluentIcon folder="Artist palette" />, label: 'Event Page' },
+  { icon: <FluentIcon folder="World map" />, label: 'Journey' },
+  { icon: <FluentIcon folder="Check mark button" />, label: 'Surveys' },
+  { icon: <FluentIcon folder="Bar chart" />, label: 'Analytics' },
 ]
 
 function FeatureCard({ card }) {
