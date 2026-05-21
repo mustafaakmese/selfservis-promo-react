@@ -9,11 +9,11 @@ const quoteIcon = (
 
 const slides = [
   {
-    img: '/testimonials/person-1.png',
-    alt: 'Sarah Mitchell',
-    quote: '"Vistream replaced three separate tools we were juggling. Setup takes minutes, not days. Our attendee engagement jumped 40% in the first month."',
-    name: 'Sarah Mitchell',
-    title: 'VP of Marketing · Novartis'
+    img: '/testimonials/osman-daggezen (1).jpg',
+    alt: 'Osman Dağgezen',
+    quote: '"Vistream streamlined our global pharma event strategies, perfectly balancing seamless omnichannel execution with strict regulatory compliance."',
+    name: 'Osman Dağgezen',
+    title: 'Founder, OD Pharma Consulting · Ex-VP, Viatris'
   },
   {
     img: '/testimonials/person-2.png',

@@ -161,7 +161,6 @@ export default function useScrollSnap() {
 
     /* ── TOUCH ── */
     const onTouchStart = (e) => {
-      if (window.matchMedia('(max-width: 768px)').matches) return
       if (e.target.closest('.legal-modal-content, .comparison-table-wrapper, [data-scroll-free]')) return
       // Sync currentIndex with actual scroll position
       currentIndex.current = findClosest()
@@ -169,13 +168,11 @@ export default function useScrollSnap() {
     }
 
     const onTouchMove = (e) => {
-      if (window.matchMedia('(max-width: 768px)').matches) return
       if (e.target.closest('.legal-modal-content, .comparison-table-wrapper, [data-scroll-free]')) return
       e.preventDefault()
     }
 
     const onTouchEnd = (e) => {
-      if (window.matchMedia('(max-width: 768px)').matches) return
       if (e.target.closest('.legal-modal-content, .comparison-table-wrapper, [data-scroll-free]')) return
       const deltaY = touchStartY.current - e.changedTouches[0].clientY
       if (Math.abs(deltaY) > 40) {
