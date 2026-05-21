@@ -4601,6 +4601,10 @@ html, body { overflow-x: clip; }
   .is-crios .ft-card-title { font-size: 14px !important; }
   .is-crios .ft-card-desc { font-size: 10.5px !important; line-height: 1.35; }
   .is-crios .ft-card-bullets li { font-size: 10px !important; line-height: 1.25; }
+  .is-crios .ft-analytics-dash { padding: 8px 10px; gap: 8px; }
+  .is-crios .ft-stat-box { padding: 6px 4px; }
+  .is-crios .ft-stat-val { font-size: 14px; }
+  .is-crios .ft-chart-mini { height: 40px; padding: 6px 8px; }
   .ft-bullet-check {
     font-size: 10px;
   }
