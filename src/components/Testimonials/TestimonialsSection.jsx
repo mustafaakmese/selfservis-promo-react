@@ -22,6 +22,7 @@ const slides = [
     name: 'Nicolas Bargas',
     title: <>Omnichannel & Marketing Communication Director <br /> BD, Greater Asia Region</>
   },
+  /*
   {
     img: '/testimonials/gokhan-isik.jpeg',
     alt: 'Gökhan Işık',
@@ -29,6 +30,7 @@ const slides = [
     name: 'Gökhan Işık',
     title: <>Event & Operations Manager <br /> Johnson & Johnson Turkiye</>
   }
+  */
 ]
 
 const stats = [
