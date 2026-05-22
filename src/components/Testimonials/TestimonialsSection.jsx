@@ -22,15 +22,13 @@ const slides = [
     name: 'Nicolas Bargas',
     title: <>Omnichannel & Marketing Communication Director <br /> BD, Greater Asia Region</>
   },
-  /*
   {
     img: '/testimonials/gokhan-isik.jpeg',
-    alt: 'Gökhan Işık',
+    alt: 'Gökhan Cüneyt Işık',
     quote: '"Vistream simplified our complex event operations in Turkiye. Their reliable platform guarantees flawless execution while ensuring complete compliance."',
-    name: 'Gökhan Işık',
-    title: <>Event & Operations Manager <br /> Johnson & Johnson Turkiye</>
+    name: 'Gökhan Cüneyt Işık',
+    title: <>Event Management and Operations Manager <br /> J&J Innovative Medicine</>
   }
-  */
 ]
 
 const stats = [
