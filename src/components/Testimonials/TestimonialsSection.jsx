@@ -16,7 +16,7 @@ const slides = [
     title: <>Founder, OD Pharma Consulting <br /> Ex-VP, Viatris</>
   },
   {
-    img: '/testimonials/nicolas-bargas-new.jpeg',
+    img: '/testimonials/nicolas-bargas.jpg',
     alt: 'Nicolas Bargas',
     quote: '"Vistream\'s hands-on onboarding and deep customization empowered us to perfectly tailor our digital events and scale campaigns across Greater Asia."',
     name: 'Nicolas Bargas',
