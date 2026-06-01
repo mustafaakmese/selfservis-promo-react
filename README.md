@@ -105,7 +105,7 @@ Access at [http://localhost:8080](http://localhost:8080).
 |-----------|-------|
 | **Base image** | `public.ecr.aws/docker/library/nginx:alpine` |
 | **Port** | `80` |
-| **Health check** | `GET /` → 200 |
+| **Health check** | `GET /health` → 200 |
 | **Database** | None |
 | **Persistent storage** | None |
 

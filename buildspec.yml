@@ -31,6 +31,10 @@ phases:
       echo "BranchName: $BranchName"
       echo $deployenv
       echo $branch
+      if [ -z "$deployenv" ]; then
+        echo "ERROR: Unsupported branch '$BranchName'. Allowed: test, staging, master"
+        exit 1
+      fi
     - echo Logging in to Amazon ECR....
     - aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin $ecrurl
     - cd /tmp
