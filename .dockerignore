@@ -1,0 +1,43 @@
+# Dependencies
+node_modules
+npm-debug.log
+
+# Environment files
+.env
+.env.*
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Documentation
+*.md
+docs/
+
+# Development tools
+.vscode
+.idea
+.editorconfig
+.eslintrc*
+eslint.config.js
+.prettierrc*
+
+# Testing
+test/
+tests/
+coverage/
+*.test.js
+*.spec.js
+
+# Build output (rebuilt inside container)
+dist
+dist-ssr
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Misc
+.cache
+test-toolbar.html
