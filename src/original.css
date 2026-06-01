@@ -733,6 +733,7 @@ html, body { overflow-x: clip; }
 
 /* Media label */
 .ft-media-label {
+  display: none; /* Hidden for now — remove this line to re-enable "See it in action" buttons */
   padding: 14px 24px;
   text-align: center;
   font-size: 13px;

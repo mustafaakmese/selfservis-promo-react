@@ -29,7 +29,7 @@ export default function FeatureMediaPanel({ type }) {
               </div>
             </div>
           </div>
-          <div className="text-center mt-2 text-[10px] text-brand-600 font-medium">See it in action →</div>
+          <div className="hidden text-center mt-2 text-[10px] text-brand-600 font-medium">See it in action →</div>
         </div>
       )
 
@@ -63,7 +63,7 @@ export default function FeatureMediaPanel({ type }) {
               </div>
             </div>
           </div>
-          <div className="text-center mt-2 text-[10px] text-brand-600 font-medium">See it in action →</div>
+          <div className="hidden text-center mt-2 text-[10px] text-brand-600 font-medium">See it in action →</div>
         </div>
       )
 
@@ -101,7 +101,7 @@ export default function FeatureMediaPanel({ type }) {
               </div>
             </div>
           </div>
-          <div className="text-center mt-2 text-[10px] text-brand-600 font-medium">See it in action →</div>
+          <div className="hidden text-center mt-2 text-[10px] text-brand-600 font-medium">See it in action →</div>
         </div>
       )
 
@@ -122,7 +122,7 @@ export default function FeatureMediaPanel({ type }) {
               <div className="h-3 bg-slate-100 rounded w-2/3 mt-2" />
             </div>
           </div>
-          <div className="text-center mt-2 text-[10px] text-brand-600 font-medium">See it in action →</div>
+          <div className="hidden text-center mt-2 text-[10px] text-brand-600 font-medium">See it in action →</div>
         </div>
       )
   }
