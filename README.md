@@ -95,10 +95,10 @@ Access at [http://localhost:8080](http://localhost:8080).
 - **Domain:** www.vistreamevents.ai
 
 ### Branch → Environment Mapping
-| Branch | Environment |
-|--------|-------------|
-| `test` | Test cluster |
-| `master` | Production cluster |
+| Code branch | Environment | Config repo branch |
+|-------------|-------------|-------------------|
+| `test` | Test cluster | `test` |
+| `master` | Production cluster | `prod` |
 
 ### Container Details
 | Parameter | Value |
