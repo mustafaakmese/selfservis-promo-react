@@ -3084,10 +3084,11 @@ html, body { overflow-x: clip; }
   z-index: 50;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.15s ease;
   display: flex;
   align-items: flex-start;
   gap: 4px;
+  will-change: transform;
 }
 
 .slides-carousel:hover .slide-cursor {
