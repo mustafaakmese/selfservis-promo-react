@@ -261,10 +261,13 @@ export default function HeroSection() {
     const FADE_END = 0.19
     const cardsStart = 0.20
 
-    // ── GATE: if snap index <= 1, restore initial state ──
+    // ── GATE: if snap index <= 1 AND scroll hasn't progressed, restore initial state ──
     // Safe to force hero text visible here — countdown is always done
     // (scrollEnabled check at line 140 blocks this during countdown)
-    if (heroSnapIndex.current <= 1) {
+    // NOTE: rawProgress check prevents a race condition on Edge where
+    // scrollTo fires the scroll event before snapChange updates heroSnapIndex,
+    // causing the first scroll into section 2 to render blank.
+    if (heroSnapIndex.current <= 1 && rawProgress < FADE_START) {
       // Restore hero text
       if (heroTextBlock) {
         heroTextBlock.style.transform = 'translateY(0) scale(1)'
@@ -339,7 +342,7 @@ export default function HeroSection() {
 
     // Active card index
     let activeIndex = -1
-    if (rawProgress > cardsStart) {
+    if (rawProgress >= cardsStart) {
       const cardProgress = (rawProgress - cardsStart) / (1 - cardsStart - 0.02)
       const clamped = Math.max(0, Math.min(0.9999, cardProgress))
       activeIndex = Math.floor(clamped * 4)

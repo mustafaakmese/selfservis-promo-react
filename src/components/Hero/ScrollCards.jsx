@@ -373,7 +373,7 @@ const ScrollCards = forwardRef(function ScrollCards({ progressFillRef, stepLabel
           <div className="card-body studio-stacked">
             <div className="studio-video-16x9 card-anim-item">
               <div className="studio-video-inner">
-                <video className="studio-video-bg" src="/video/video3.mp4" autoPlay muted loop playsInline></video>
+                <video className="studio-video-bg" src="/video/video3.mp4" autoPlay muted loop playsInline disablePictureInPicture disableRemotePlayback></video>
                 <div className="studio-overlay-meta">
                   <div className="studio-timer" id="studio-timer">00:47:23</div>
                 </div>
