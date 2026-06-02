@@ -143,14 +143,57 @@ const LaptopMockup = forwardRef(function LaptopMockup(props, ref) {
     const cursor = cursorRef.current
     if (!carousel || !cursor) return
 
+    // Track both the target (mouse) and current (rendered) positions
+    let targetX = 0, targetY = 0
+    let currentX = 0, currentY = 0
+    let animId = null
+    let isInside = false
+
+    // Lerp factor — higher = snappier, lower = smoother trail
+    const LERP = 0.25
+
+    function tick() {
+      if (!isInside) { animId = null; return }
+      // Interpolate toward target
+      currentX += (targetX - currentX) * LERP
+      currentY += (targetY - currentY) * LERP
+      // Offset by (-1, -1) so the SVG arrow tip (path starts at M1,1) aligns with the real cursor
+      cursor.style.transform = `translate(${currentX - 1}px, ${currentY - 1}px)`
+      animId = requestAnimationFrame(tick)
+    }
+
     function onMove(e) {
       const rect = carousel.getBoundingClientRect()
-      const x = e.clientX - rect.left
-      const y = e.clientY - rect.top
-      cursor.style.transform = `translate(${x}px, ${y}px)`
+      // getBoundingClientRect returns screen-space (post-transform) dimensions,
+      // but translate() operates in local (pre-transform) space.
+      // Dividing by the scale ratio corrects the mismatch caused by
+      // the parent laptop-wrapper's scale(1.4) transform.
+      const scaleX = rect.width / carousel.offsetWidth
+      const scaleY = rect.height / carousel.offsetHeight
+      targetX = (e.clientX - rect.left) / scaleX
+      targetY = (e.clientY - rect.top) / scaleY
+      if (!isInside) {
+        // First entry — snap immediately (no lerp lag on enter)
+        isInside = true
+        currentX = targetX
+        currentY = targetY
+        cursor.style.transform = `translate(${currentX - 1}px, ${currentY - 1}px)`
+      }
+      if (!animId) animId = requestAnimationFrame(tick)
     }
+
+    function onLeave() {
+      isInside = false
+      if (animId) { cancelAnimationFrame(animId); animId = null }
+    }
+
     carousel.addEventListener('mousemove', onMove)
-    return () => carousel.removeEventListener('mousemove', onMove)
+    carousel.addEventListener('mouseleave', onLeave)
+    return () => {
+      carousel.removeEventListener('mousemove', onMove)
+      carousel.removeEventListener('mouseleave', onLeave)
+      if (animId) cancelAnimationFrame(animId)
+    }
   }, [])
 
   // ── Dot click handler ──
@@ -192,6 +235,8 @@ const LaptopMockup = forwardRef(function LaptopMockup(props, ref) {
                 muted
                 loop
                 playsInline
+                disablePictureInPicture
+                disableRemotePlayback
                 className="presenter-image"
               />
               <div className="presenter-mask"></div>
