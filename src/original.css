@@ -3957,7 +3957,7 @@ html, body { overflow-x: clip; }
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 80px 16px 24px;
+    padding: 65px 16px 16px;
     box-sizing: border-box;
     opacity: 1;
     transition: opacity 0.4s ease;
@@ -3979,11 +3979,11 @@ html, body { overflow-x: clip; }
   }
   /* ── Phone Mockup — narrow, tall, realistic phone proportions ── */
   .laptop-lid {
-    width: 62%;
-    max-width: 255px;
+    width: 52%;
+    max-width: 220px;
     /* Phone-like frame */
     border: 3px solid #0284c7 !important;
-    border-radius: 36px !important;
+    border-radius: 32px !important;
     box-shadow: 0 0 0 1px rgba(2, 132, 199, 0.5),
                 0 12px 40px rgba(0, 0, 0, 0.3),
                 inset 0 0 0 1px rgba(255, 255, 255, 0.08);
@@ -3992,9 +3992,9 @@ html, body { overflow-x: clip; }
     margin: 0 auto;
   }
   .laptop-screen {
-    padding: 22px 5px 4px 5px;
+    padding: 20px 4px 4px 4px;
     aspect-ratio: auto !important;
-    border-radius: 33px !important;
+    border-radius: 29px !important;
     border: none !important;
     overflow: hidden;
   }
@@ -4353,7 +4353,7 @@ html, body { overflow-x: clip; }
 
   /* Trust bar — show inline, no transform */
   .hero-trust-bar {
-    margin-top: 24px;
+    margin-top: 16px;
     transform: none !important;
     animation: none;
     opacity: 1;
@@ -4367,20 +4367,24 @@ html, body { overflow-x: clip; }
   .trust-social-proof {
     flex-direction: column;
     text-align: center;
-    padding: 12px 16px;
-    border-radius: 20px;
+    padding: 8px 12px;
+    border-radius: 16px;
   }
   .trust-user-count {
     text-align: center;
-    font-size: 12px;
+    font-size: 11px;
   }
   .trust-logos {
     max-width: 100%;
-    margin-top: 12px;
+    margin-top: 8px;
+  }
+  .trust-logos-title {
+    font-size: 10px;
+    margin-bottom: 4px;
   }
   .trust-logos-track img {
-    height: 16px;
-    max-width: 80px;
+    height: 14px;
+    max-width: 70px;
   }
 
   /* ── FEATURES STACKING — Collapse from 450vh to auto ── */
