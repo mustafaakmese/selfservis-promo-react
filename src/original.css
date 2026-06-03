@@ -4289,7 +4289,7 @@ html, body { overflow-x: clip; }
   .mock-label { font-size: 8px !important; margin-bottom: 2px !important; letter-spacing: 0.05em !important; }
   .mock-input { padding: 6px 8px !important; font-size: 11px !important; min-height: 28px !important; border-radius: 6px !important; }
   .mock-input-sm { padding: 5px 7px !important; font-size: 10px !important; }
-  .mock-row { flex-direction: column; gap: 4px !important; margin-bottom: 6px !important; }
+  .mock-row { flex-direction: row; gap: 6px !important; margin-bottom: 6px !important; }
   .mock-preview-box { padding: 10px 8px !important; border-radius: 6px !important; }
   .mock-preview-bar { height: 5px !important; margin-bottom: 5px !important; }
   .mock-preview-line { height: 4px !important; margin-bottom: 3px !important; }
