@@ -4227,7 +4227,7 @@ html, body { overflow-x: clip; }
   /* Cards: absolutely stacked, fill the entire sequence container */
   .scroll-card {
     position: absolute !important;
-    top: 0; left: 0; right: 0; bottom: 30%;
+    top: 0; left: 0; right: 0; bottom: 15%;
     width: 100% !important;
     max-width: 100% !important;
     opacity: 0 !important;
