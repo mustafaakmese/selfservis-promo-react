@@ -4058,7 +4058,7 @@ html, body { overflow-x: clip; }
   /* Speaker — small PiP box, bottom-right corner, overlaid on slides */
   .webinar-presenter {
     position: absolute !important;
-    bottom: 18px;
+    bottom: 13px;
     right: 6px;
     width: 75px !important;
     height: 82px !important;
