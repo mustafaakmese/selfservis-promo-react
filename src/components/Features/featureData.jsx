@@ -8,7 +8,7 @@ export const featureCards = [
   {
     icon: <FluentIcon folder="Sparkles" />,
     eyebrow: 'AI Copilot Agent',
-    title: 'Use your own Microsoft Copilot to manage every event',
+    title: 'Microsoft Copilot to manage your events',
     desc: 'No new tools to learn. The same Microsoft Copilot already on your desktop becomes your event manager. Just type what you need: create events, add speakers, send invites, publish landing pages.',
     bullets: [
       'Works inside your existing Microsoft Copilot',
@@ -44,7 +44,7 @@ export const featureCards = [
   {
     icon: <FluentIcon folder="Clipboard" />,
     eyebrow: 'Intelligent Register',
-    title: 'Smart registration with parallel sessions & multi-day support',
+    title: 'Comprehensive registration form built with ease',
     desc: 'Automatically detects and presents parallel sessions for attendee selection, supports seamless multi-day event registration with a single checkout.',
     bullets: [
       'Automatic parallel session detection & selection',
@@ -68,7 +68,7 @@ export const featureCards = [
   {
     icon: <FluentIcon folder="Artist palette" />,
     eyebrow: 'Customized Event Page',
-    title: 'Your brand, your stage. Fully customizable event pages',
+    title: 'Fully customizable event pages',
     desc: 'Custom fonts, curated color palettes, dynamic backgrounds, and fully responsive layouts. Every event page reflects your brand identity.',
     bullets: [
       'Custom fonts & color palettes',
@@ -80,7 +80,7 @@ export const featureCards = [
   {
     icon: <FluentIcon folder="World map" />,
     eyebrow: 'Intelligent Journey',
-    title: 'Visualize every touchpoint of your attendee experience',
+    title: 'Visualize your attendee experience',
     desc: 'A live screenshot-based journey map showing every page your attendees interact with, from registration to certificates.',
     bullets: [
       'Live screenshot previews of every page',
@@ -92,7 +92,7 @@ export const featureCards = [
   {
     icon: <FluentIcon folder="Check mark button" />,
     eyebrow: 'Surveys & Certificates',
-    title: 'Capture feedback first, then reward with certificates',
+    title: 'Surveys first, then certificates',
     desc: 'Post-event surveys collect actionable feedback and NPS scores before attendees receive their branded PDF attendance certificates.',
     bullets: [
       'Survey-first flow for maximum response rates',
