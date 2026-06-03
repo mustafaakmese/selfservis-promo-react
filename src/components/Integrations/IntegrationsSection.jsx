@@ -31,7 +31,7 @@ function OrbitNode({ node }) {
     <div className={`orbit-arm arm-${node.armNum}`}>
       <div className={`orbit-node-counter counter-${node.armNum}`}>
         <div className="orbit-node">
-          <img src={node.src} width="36" height="36" alt={node.alt} />
+          <img src={node.src} width="36" height="36" alt={node.alt} loading="lazy" decoding="async" />
           <span className="node-tooltip">{node.label}</span>
         </div>
       </div>

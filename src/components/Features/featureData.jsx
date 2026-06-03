@@ -1,7 +1,7 @@
 export const FluentIcon = ({ folder }) => {
   const name = folder.toLowerCase().replace(/ /g, '_');
   const url = `https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/${encodeURIComponent(folder)}/3D/${name}_3d.png`;
-  return <img src={url} alt={folder} style={{ width: '1.2em', height: '1.2em', display: 'inline-block', verticalAlign: 'middle', filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.08))' }} />;
+  return <img src={url} alt={folder} loading="lazy" decoding="async" style={{ width: '1.2em', height: '1.2em', display: 'inline-block', verticalAlign: 'middle', filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.08))' }} />;
 };
 
 export const featureCards = [

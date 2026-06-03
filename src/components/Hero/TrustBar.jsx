@@ -39,7 +39,7 @@ function BadgeItem({ badge }) {
   return (
     <>
       <div className="trust-badge" data-tooltip={badge.tooltip}>
-        <img src={badge.src} alt={badge.alt} />
+        <img src={badge.src} alt={badge.alt} width="32" height="32" />
         <span>{badge.label}</span>
       </div>
       <div className="trust-divider"></div>
@@ -104,11 +104,11 @@ export default function TrustBar() {
       {/* Social Proof */}
       <div className="trust-social-proof">
         <div className="avatar-stack">
-          <img src="https://i.pravatar.cc/100?img=68" alt="User" />
-          <img src="https://i.pravatar.cc/100?img=47" alt="User" />
-          <img src="https://i.pravatar.cc/100?img=33" alt="User" />
-          <img src="https://i.pravatar.cc/100?img=12" alt="User" />
-          <img src="https://i.pravatar.cc/100?img=5" alt="User" />
+          <img src="/avatars/user-68.jpg" alt="User" width="100" height="100" />
+          <img src="/avatars/user-47.jpg" alt="User" width="100" height="100" />
+          <img src="/avatars/user-33.jpg" alt="User" width="100" height="100" />
+          <img src="/avatars/user-12.jpg" alt="User" width="100" height="100" />
+          <img src="/avatars/user-5.jpg" alt="User" width="100" height="100" />
         </div>
         <p className="trust-user-count">
           <strong>10,000+</strong> events hosted by leading pharma &amp; healthcare organizations worldwide
@@ -121,7 +121,7 @@ export default function TrustBar() {
         <div className="trust-logos-marquee">
           <div className="trust-logos-track">
             {companyLogos.map((logo, i) => (
-              <img key={i} src={logo.src} alt={logo.alt} />
+              <img key={i} src={logo.src} alt={logo.alt} width="100" height="20" loading="lazy" decoding="async" />
             ))}
           </div>
           <div className="trust-logos-track" aria-hidden="true">
