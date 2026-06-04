@@ -70,7 +70,7 @@ export default function Navbar() {
           setMobileMenuOpen(false)
           window.scrollTo({ top: 0, behavior: 'smooth' })
         }}>
-          <img src="/img/vistream-logo.ico" alt="Vistream" className="nav-logo" />
+          <img src="/img/vistream-logo.ico" alt="Vistream" className="nav-logo" width="28" height="28" />
         </a>
         {/* ── Mobile: brand text + 3-dot menu ── */}
         <span className="nav-brand-text">Vistream Events</span>

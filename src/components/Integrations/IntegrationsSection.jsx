@@ -75,7 +75,7 @@ export default function IntegrationsSection() {
 
             {/* Center hub */}
             <div className="orbit-hub">
-              <img src="/favicon.ico" alt="Vistream" style={{ width: '48px', height: '48px', borderRadius: '12px' }} />
+              <img src="/favicon.ico" alt="Vistream" width="48" height="48" style={{ width: '48px', height: '48px', borderRadius: '12px' }} />
             </div>
 
             {/* Inner orbit */}

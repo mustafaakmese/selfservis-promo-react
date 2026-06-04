@@ -126,7 +126,7 @@ export default function TrustBar() {
           </div>
           <div className="trust-logos-track" aria-hidden="true">
             {companyLogos.map((logo, i) => (
-              <img key={`dup-${i}`} src={logo.src} alt={logo.alt} />
+              <img key={`dup-${i}`} src={logo.src} alt={logo.alt} width="100" height="20" loading="lazy" decoding="async" />
             ))}
           </div>
         </div>

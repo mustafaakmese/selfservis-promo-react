@@ -4,7 +4,7 @@ export default function Footer({ onOpenLegal, onOpenCookieSettings }) {
       <div className="container">
         <div className="footer-grid">
           <div className="footer-brand">
-            <img src="/vistream_beyaz.png" alt="Vistream" style={{ height: '24px', opacity: 0.7 }} />
+            <img src="/vistream_beyaz.png" alt="Vistream" width="24" height="24" style={{ height: '24px', opacity: 0.7 }} />
             <p>The all-in-one platform for professional webinars, hybrid meetings, and TV-quality webcasts.</p>
           </div>
           <div className="footer-col">

@@ -60,7 +60,7 @@ export default function ComparisonSection() {
                   <th className="col-feature">Feature</th>
                   <th className="col-vistream">
                     <div className="vistream-th-inner">
-                      <img src="/assets/favicon.ico" alt="Vistream" style={{ height: '24px', display: 'block' }} />
+                      <img src="/assets/favicon.ico" alt="Vistream" width="24" height="24" style={{ height: '24px', display: 'block' }} />
                       Vistream Events
                     </div>
                   </th>
