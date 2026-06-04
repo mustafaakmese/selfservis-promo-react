@@ -1,4 +1,4 @@
-export default function Footer({ onOpenLegal }) {
+export default function Footer({ onOpenLegal, onOpenCookieSettings }) {
   return (
     <footer className="footer">
       <div className="container">
@@ -30,6 +30,7 @@ export default function Footer({ onOpenLegal }) {
             <a href="#" onClick={(e) => { e.preventDefault(); onOpenLegal('faq') }}>FAQ</a>
             <a href="#" onClick={(e) => { e.preventDefault(); onOpenLegal('privacy') }}>Privacy Policy</a>
             <a href="#" onClick={(e) => { e.preventDefault(); onOpenLegal('terms') }}>Terms of Use</a>
+            <a href="#" onClick={(e) => { e.preventDefault(); onOpenCookieSettings && onOpenCookieSettings() }}>Cookie Settings</a>
           </div>
         </div>
       </div>

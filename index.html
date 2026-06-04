@@ -3,6 +3,50 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Analytics 4 — Consent Mode v2 defaults -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+
+    // Consent Mode v2: default ALL consent signals to 'denied'.
+    // GDPR/ePrivacy requires opt-in before any non-essential cookies.
+    // The React CookieConsent component will call gtag('consent','update',…)
+    // once the user interacts with the banner (or restores from localStorage).
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied',
+      'functionality_storage': 'granted',
+      'security_storage': 'granted',
+      'wait_for_update': 500
+    });
+
+    // Restore previously saved consent from localStorage (before tags fire).
+    // This runs synchronously so returning visitors get their choice applied
+    // before the gtag config call below, avoiding any cookieless pings.
+    (function() {
+      try {
+        var saved = JSON.parse(localStorage.getItem('vistream_cookie_consent'));
+        if (saved && saved.version === 1) {
+          gtag('consent', 'update', {
+            'analytics_storage': saved.analytics ? 'granted' : 'denied',
+            'ad_storage': saved.marketing ? 'granted' : 'denied',
+            'ad_user_data': saved.marketing ? 'granted' : 'denied',
+            'ad_personalization': saved.marketing ? 'granted' : 'denied'
+          });
+        }
+      } catch(e) {}
+    })();
+  </script>
+
+  <!-- Global site tag (gtag.js) — Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J4KLEMR0BV"></script>
+  <script>
+    gtag('js', new Date());
+    gtag('config', 'G-J4KLEMR0BV');
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin />

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import useScrollSnap from './hooks/useScrollSnap'
 import Navbar from './components/Navbar'
 import HeroSection from './components/Hero/HeroSection'
@@ -9,10 +9,19 @@ import ComparisonSection from './components/Comparison/ComparisonSection'
 import CTABand from './components/CTABand'
 import Footer from './components/Footer'
 import LegalModal from './components/LegalModal'
+import CookieConsent from './components/CookieConsent'
 
 function App() {
   const [legalType, setLegalType] = useState(null)
+  const [cookieOpenCount, setCookieOpenCount] = useState(0)
   useScrollSnap()
+
+  // Re-open cookie consent banner (called from Footer "Cookie Settings" link)
+  // Uses a counter instead of boolean so each click generates a new React key,
+  // guaranteeing a fresh remount even if the user opens→saves→opens again.
+  const handleOpenCookieSettings = useCallback(() => {
+    setCookieOpenCount(prev => prev + 1)
+  }, [])
 
   // ── Cal.com EU embed initialization ──
   useEffect(() => {
@@ -82,10 +91,15 @@ function App() {
         <ComparisonSection />
         <CTABand onOpenFaq={() => setLegalType('faq')} />
       </main>
-      <Footer onOpenLegal={setLegalType} />
+      <Footer onOpenLegal={setLegalType} onOpenCookieSettings={handleOpenCookieSettings} />
       {legalType && (
         <LegalModal type={legalType} onClose={() => setLegalType(null)} />
       )}
+      <CookieConsent
+        forceOpen={cookieOpenCount > 0}
+        key={cookieOpenCount}
+        onOpenPrivacy={() => setLegalType('privacy')}
+      />
     </>
   )
 }

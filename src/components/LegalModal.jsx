@@ -79,7 +79,7 @@ function FaqContent() {
 function PrivacyContent() {
   return (
     <>
-      <p className="legal-effective">Last updated: May 15, 2026</p>
+      <p className="legal-effective">Last updated: June 4, 2026</p>
       <p>Vistream Events ("Vistream", "we", "our", or "us") is a product of <strong>Niceye Group</strong>, headquartered in Istanbul, Türkiye.</p>
 
       <h4>1. Data Controller and Processor</h4>
@@ -91,25 +91,37 @@ function PrivacyContent() {
       <h4>3. Data Collection</h4>
       <p>We collect Account Data (name, email), Event/Usage Data (logs, connection metadata), and Integration Data (only when you connect third-party platforms).</p>
 
-      <h4>4. Data Isolation and Third-Party Integrations</h4>
+      <h4>4. Cookies & Analytics</h4>
+      <p>This website uses <strong>Google Analytics 4</strong> (provided by Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland) to understand how visitors interact with our site and to improve the user experience.</p>
+      <p><strong>Cookies placed by Google Analytics:</strong></p>
+      <ul>
+        <li><code>_ga</code> — Distinguishes unique visitors. Retention: up to 14 months.</li>
+        <li><code>_ga_*</code> — Maintains session state. Retention: up to 14 months.</li>
+      </ul>
+      <p>We implement <strong>Google Consent Mode v2</strong>, which means analytics cookies are only placed after you provide explicit consent via our cookie banner. Until consent is granted, Google Analytics operates in cookieless mode and does not store any data on your device.</p>
+      <p>The data collected includes pages visited, time on site, referral source, device type, and approximate geographic location. We do <strong>not</strong> enable Google Signals, User-ID, or any advertising features. Your IP address is anonymized before any data is sent to Google.</p>
+      <p>You may withdraw your consent at any time by clicking the <strong>"Cookie Settings"</strong> link in the footer of this website. You can also install the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out Browser Add-on</a> to prevent data collection across all websites.</p>
+      <p>For more information on how Google processes data, see <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</p>
+
+      <h4>5. Data Isolation and Third-Party Integrations</h4>
       <p>We <strong>do not sell or share</strong> your data. Data only flows to integrations you explicitly enable, such as Salesforce, Marketo, Teams, Zoom, Google Analytics, or Adobe Analytics.</p>
 
-      <h4>5. AI Features and Data Training</h4>
+      <h4>6. AI Features and Data Training</h4>
       <p>Our AI features are strictly opt-in. We utilize OpenAI, Anthropic, and Google Gemini as sub-processors for these features. <strong>We guarantee that your data is NEVER used to train any third-party AI models.</strong> Enterprise customers may also use our Model Context Protocol (MCP) integrations.</p>
 
-      <h4>6. Data Hosting and Security</h4>
+      <h4>7. Data Hosting and Security</h4>
       <p>Your data is securely hosted on Microsoft Azure in the Eastern Europe region. We implement pharma/healthcare-grade security measures compliant with HIPAA, ISO 27001, and SOC 2.</p>
 
-      <h4>7. Sub-Processors</h4>
-      <p>We use trusted sub-processors including Microsoft Azure, OpenAI, Anthropic, and Google. All sub-processors are bound by strict Data Processing Agreements (DPAs).</p>
+      <h4>8. Sub-Processors</h4>
+      <p>We use trusted sub-processors including Microsoft Azure, OpenAI, Anthropic, Google Ireland Limited (Google Analytics), and Google LLC (Gemini AI). All sub-processors are bound by strict Data Processing Agreements (DPAs).</p>
 
-      <h4>8. Breach Notification</h4>
+      <h4>9. Breach Notification</h4>
       <p>In the event of a personal data breach, we will notify the relevant supervisory authority and affected users within 72 hours, in compliance with GDPR and KVKK requirements.</p>
 
-      <h4>9. Recording Consent</h4>
+      <h4>10. Recording Consent</h4>
       <p>Event Organizers may record sessions. Attendees will always receive a clear notification when joining a recordable session. Continued participation constitutes consent.</p>
 
-      <h4>10. Your Rights</h4>
+      <h4>11. Your Rights</h4>
       <p>You have the right to access, rectify, or delete your data, and the right to lodge a complaint with a supervisory authority (such as the Turkish Data Protection Authority / KVKK Kurumu or your local EU authority).</p>
 
       <p>For any privacy inquiries, please contact us at: <a href="mailto:connect@vistream.tv">connect@vistream.tv</a></p>
@@ -120,7 +132,7 @@ function PrivacyContent() {
 function TermsContent() {
   return (
     <>
-      <p className="legal-effective">Last updated: May 15, 2026</p>
+      <p className="legal-effective">Last updated: June 4, 2026</p>
 
       <h4>1. Acceptance of Terms</h4>
       <p>By using Vistream Events, you agree to these Terms of Use. If you do not agree, do not use the platform.</p>
@@ -131,25 +143,28 @@ function TermsContent() {
       <h4>3. Data Processing Agreement (DPA)</h4>
       <p>Our handling of your data is governed by our Privacy Policy and the Data Processing Agreement (DPA) incorporated by reference into these Terms.</p>
 
-      <h4>4. AI Output Disclaimer</h4>
+      <h4>4. Cookies & Analytics</h4>
+      <p>This website uses cookies for analytics purposes as described in our Privacy Policy (Section 4: Cookies & Analytics). By continuing to use this site and providing consent via our cookie banner, you agree to the placement of analytics cookies. You may withdraw consent at any time via the "Cookie Settings" link in the site footer.</p>
+
+      <h4>5. AI Output Disclaimer</h4>
       <p>Vistream provides AI-assisted features (e.g., event scheduling, transcriptions). AI outputs are generated algorithmically and are provided "AS IS". You are responsible for reviewing and verifying any AI-generated content before use.</p>
 
-      <h4>5. Confidentiality</h4>
+      <h4>6. Confidentiality</h4>
       <p>Both parties agree to maintain the confidentiality of each other's proprietary information. This obligation survives the termination of these Terms.</p>
 
-      <h4>6. Recording Consent for Content</h4>
+      <h4>7. Recording Consent for Content</h4>
       <p>As an Organizer, you are solely responsible for obtaining all necessary consents from speakers and attendees prior to recording any session, in accordance with applicable laws.</p>
 
-      <h4>7. Warranty Disclaimer</h4>
+      <h4>8. Warranty Disclaimer</h4>
       <p>VISTREAM EVENTS IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT ANY WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT.</p>
 
-      <h4>8. Force Majeure</h4>
+      <h4>9. Force Majeure</h4>
       <p>We are not liable for any failure or delay in performance due to circumstances beyond our reasonable control, including natural disasters, acts of government, or internet service provider failures.</p>
 
-      <h4>9. Severability and Waiver</h4>
+      <h4>10. Severability and Waiver</h4>
       <p>If any provision of these Terms is found to be unenforceable, the remaining provisions will remain in full force. Failure to enforce any right does not constitute a waiver of that right.</p>
 
-      <h4>10. Entire Agreement</h4>
+      <h4>11. Entire Agreement</h4>
       <p>These Terms, along with the Privacy Policy and any applicable order forms, constitute the entire agreement between you and Niceye Group regarding Vistream Events.</p>
 
       <p>For any legal inquiries, contact us at: <a href="mailto:connect@vistream.tv">connect@vistream.tv</a></p>
