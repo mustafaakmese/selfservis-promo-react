@@ -2519,9 +2519,7 @@ html, body { overflow-x: clip; }
 .comparison-table th {
   position: sticky;
   top: 0;
-  background-color: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background-color: #f1f5f9; /* Solid fallback (slate-100) when backdrop-filter is unavailable */
   z-index: 10;
   box-shadow: 0 2px 4px rgba(15, 23, 42, 0.05); /* Separates header from scrolling content */
   font-weight: 600;
@@ -2529,6 +2527,13 @@ html, body { overflow-x: clip; }
   font-size: 16px;
   padding-top: 24px;
   padding-bottom: 20px;
+}
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .comparison-table th {
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
 }
 
 .comparison-table th.col-feature {
