@@ -274,14 +274,14 @@ const LaptopMockup = forwardRef(function LaptopMockup(props, ref) {
                   </div>
                   <div className="slide-inner">
                     <div className="slide-content">
-                      <h1 className="font-display text-display">
+                      <h2 className="font-display text-display">
                         <span className="rotating-words">
                           <span className="rotating-word active">Create</span>
                           <span className="rotating-word">Manage</span>
                           <span className="rotating-word">Share</span>
                         </span>
                         <br />AI-powered Digital Events
-                      </h1>
+                      </h2>
                       <p className="hero-sub">AI-guided workflows and instant suggestions, intelligent user journey builders, Microsoft Co-pilot &amp; Claude Co-work connections and many more...</p>
                     </div>
                   </div>
