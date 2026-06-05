@@ -63,7 +63,7 @@ export default function Navbar() {
   }, [])
 
   return (
-    <nav className={`nav${scrolled ? ' scrolled' : ''}`} id="nav" ref={menuRef}>
+    <nav className={`nav${scrolled ? ' scrolled' : ''}`} id="nav" ref={menuRef} aria-label="Main navigation">
       <div className="nav-inner">
         <a href="#" className="nav-logo-link" onClick={(e) => {
           e.preventDefault()

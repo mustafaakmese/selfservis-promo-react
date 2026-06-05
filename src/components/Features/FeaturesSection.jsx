@@ -612,7 +612,7 @@ export default function FeaturesSection() {
   }, [])
 
   return (
-    <section className="features-stacking-section" id="features">
+    <section className="features-stacking-section" id="features" aria-label="Platform features">
       <div className="ft-stack-wrapper" id="ft-stack-wrapper" ref={wrapperRef}>
         <div className="ft-stack-viewport" id="ft-stack-viewport">
           <div className="ft-stack-header">

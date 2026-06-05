@@ -45,7 +45,7 @@ export default function ComparisonSection() {
   }, [])
 
   return (
-    <section className="section" id="comparison" style={{ backgroundColor: '#fafafa' }} ref={sectionRef}>
+    <section className="section" id="comparison" style={{ backgroundColor: '#fafafa' }} ref={sectionRef} aria-label="Feature comparison — Vistream Events vs other platforms">
       <div className="container">
         <div className="section-header reveal">
           <h2 className="font-display text-heading-lg" style={{ marginBottom: '16px' }}>Purpose-built for regulated industries.</h2>

@@ -58,7 +58,7 @@ export default function IntegrationsSection() {
   }, [])
 
   return (
-    <section className="section" id="integrations" ref={sectionRef}>
+    <section className="section" id="integrations" ref={sectionRef} aria-label="Integrations with your existing tools">
       <div className="container">
         <div className="integration-header" style={{ textAlign: 'center', marginBottom: '60px' }}>
           <h2 className="font-display text-heading-lg" style={{ marginBottom: '16px' }}>Works with your entire stack.</h2>

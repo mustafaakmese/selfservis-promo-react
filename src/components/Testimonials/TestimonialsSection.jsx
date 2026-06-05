@@ -161,7 +161,7 @@ export default function TestimonialsSection() {
   }, [nextSlide, prevSlide])
 
   return (
-    <section className="section" id="social-proof">
+    <section className="section" id="social-proof" aria-label="Testimonials and social proof">
       <div className="container">
         <div className="testimonial-header reveal">
           <h2 className="font-display text-heading-lg">Hear from the teams who trust Vistream Events every single day.</h2>

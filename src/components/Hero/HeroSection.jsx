@@ -539,7 +539,10 @@ export default function HeroSection() {
 
 
   return (
-    <section className="hero" id="hero" ref={heroRef}>
+    <section className="hero" id="hero" ref={heroRef} aria-label="Hero — Vistream Events AI-powered digital event platform">
+      {/* Semantic H1 for search engines & AI agents — visually hidden, doesn't affect design */}
+      <h1 className="sr-only">Vistream Events — AI-Powered Digital Event Platform for Pharma &amp; Healthcare</h1>
+
       {/* Canvas for particles */}
       <canvas id="hero-canvas"></canvas>
 
